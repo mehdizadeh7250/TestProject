@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="example.app.test.domain.model.remote.response.Restaurant" />
+
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lyt_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:paddingTop="8dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="30dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:paddingBottom="5dp"
+            app:cardBackgroundColor="@color/colorDefaultBackgroundLight"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guide_top"
+            app:layout_constraintWidth_percent=".97">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lyt_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/inner_guide_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.35" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/inner_guide_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="90dp" />
+
+                <TextView
+                    android:id="@+id/txtRestaurantName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@{vm.name}"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/inner_guide_start"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Yvonne's Vispaleis" />
+
+                <TextView
+                    android:id="@+id/txtDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="start"
+                    android:lineSpacingExtra="3sp"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:text="@{vm.sortingValues.getDistance}"
+                    android:textColor="@color/colorLightGrey3"
+                    android:textSize="11sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/inner_guide_start"
+                    app:layout_constraintTop_toBottomOf="@id/txtRestaurantName"
+                    tools:text="Distance : 10 Km " />
+
+                <TextView
+                    android:id="@+id/txtRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:padding="2dp"
+                    android:singleLine="true"
+                    android:text="@{vm.sortingValues.getRate}"
+                    android:textColor="@color/colorLightGrey3"
+                    android:textSize="11sp"
+                    app:drawableStartCompat="@drawable/ic_star"
+                    app:layout_constraintEnd_toEndOf="@id/txtDistance"
+                    app:layout_constraintStart_toStartOf="@id/txtDistance"
+                    app:layout_constraintTop_toBottomOf="@id/txtDistance"
+                    tools:text="Rate : 4 " />
+
+                <TextView
+                    android:id="@+id/txtAveragePrice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@{vm.sortingValues.getAverage}"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="11sp"
+                    app:layout_constraintEnd_toStartOf="@+id/inner_guide_start"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/inner_guide_top"
+                    tools:text="892" />
+
+
+                <TextView
+                    android:id="@+id/txtDeliveryPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@{vm.sortingValues.getDeliveryCosts}"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="11sp"
+                    app:layout_constraintEnd_toStartOf="@+id/inner_guide_start"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtAveragePrice"
+                    tools:text="0" />
+
+
+                <TextView
+                    android:id="@+id/txtUnavailable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_unavalable"
+                    android:paddingStart="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="@{vm.status}"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@id/txtDeliveryPrice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/txtAveragePrice"
+                    tools:text="Open " />
+
+                <example.app.test.utils.customView.WaveView
+                    android:id="@+id/waveView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/ic_favorite"
+                    app:layout_constraintEnd_toEndOf="@id/ic_favorite"
+                    app:layout_constraintStart_toStartOf="@id/ic_favorite"
+                    app:layout_constraintTop_toTopOf="@id/ic_favorite"
+                    tools:visibility="visible" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ic_favorite"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="10dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toStartOf="@id/txtUnavailable"
+                    app:layout_constraintTop_toTopOf="@id/txtUnavailable"
+                    app:srcCompat="@drawable/ic_favorite" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".05" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_food_recy"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:elevation="7dp"
+            app:layout_constraintStart_toEndOf="@id/guide_end"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="120:120"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/roundedImageView"
+                app:srcCompat="@drawable/ic_pic" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
