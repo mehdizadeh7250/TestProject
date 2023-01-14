@@ -2,7 +2,7 @@
 
 # ![]Test Android Technical Specifications
 **Last Edited At:** 01/14/2022
-**Editors:** S.Saeed Hashemi  
+**Editors:** Ali Mehdizadeh
 
 # Table of Contents
 * [Introduction](#sec-introduction)
